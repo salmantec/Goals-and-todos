@@ -21,7 +21,7 @@ export function handleAddGoal(name, cb) {
     return (dispatch) => {
       return API.saveGoal(name)
         .then((goal) => {
-          dispatch(addGoalAction(goal));
+          dispatch(addGoal(goal));
           cb();
         })
         .catch(() => alert("There was an error. Try again."));
@@ -30,10 +30,10 @@ export function handleAddGoal(name, cb) {
 
 export function handleDeleteGoal(goal) {
     return (dispatch) => {
-      dispatch(removeGoalAction(goal.id));
+      dispatch(removeGoal(goal.id));
 
       return API.deleteGoal(goal.id).catch(() => {
-        dispatch(addGoalAction(goal));
+        dispatch(addGoal(goal));
         alert("An error occurred. Try again.");
       });
     };

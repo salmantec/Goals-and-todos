@@ -29,7 +29,7 @@ export function handleAddTodo(name, cb) {
     return (dispatch) => {
       return API.saveTodo(name)
         .then((todo) => {
-          dispatch(addTodoAction(todo));
+          dispatch(addTodo(todo));
           cb();
         })
         .catch(() => {
@@ -40,10 +40,10 @@ export function handleAddTodo(name, cb) {
 
 export function handleDeleteTodo(todo) {
     return (dispatch) => {
-      dispatch(removeTodoAction(todo.id));
+      dispatch(removeTodo(todo.id));
 
       return API.deleteTodo(todo.id).catch(() => {
-        dispatch(addTodoAction(todo));
+        dispatch(addTodo(todo));
         alert("An error occurred. Try again.");
       });
     };
@@ -51,10 +51,10 @@ export function handleDeleteTodo(todo) {
 
 export function handleToggle(id) {
     return (dispatch) => {
-      dispatch(toggleTodoAction(id));
+      dispatch(toggleTodo(id));
 
       return API.saveTodoToggle(id).catch(() => {
-        dispatch(toggleTodoAction(id));
+        dispatch(toggleTodo(id));
         alert("An error occurred. Try again.");
       });
     };
