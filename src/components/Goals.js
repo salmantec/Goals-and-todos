@@ -6,7 +6,7 @@ import List from "./List";
 
 
 const Goals = (props) => {
-    const inputRef = React.useRef();
+    const inputRef = useRef();
 
     const addItem = (e) => {
       e.preventDefault();
